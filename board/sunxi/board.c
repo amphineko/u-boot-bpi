@@ -471,10 +471,13 @@ void sunxi_board_init(void)
 #endif
 
 	/* For Bananapi, enable GPIO LDO */
-	power_failed |= axp221_set_dldo2(2800);
-	power_failed |= axp221_set_dldo3(3300);
-	power_failed |= axp221_set_gldo(0, 3000);
-	power_failed |= axp221_set_gldo(1, 3000);
+	// TODO: fix this reference error
+	/*
+	 power_failed |= axp221_set_dldo2(2800);
+	 power_failed |= axp221_set_dldo3(3300);
+	 power_failed |= axp221_set_gldo(0, 3000);
+	 power_failed |= axp221_set_gldo(1, 3000);
+	*/
 
 	printf("DRAM:");
 	ramsize = sunxi_dram_init();
