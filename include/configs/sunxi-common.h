@@ -415,18 +415,6 @@ extern int soft_i2c_gpio_scl;
 	"fdt ram " FDT_ADDR_R " 0x100000;" \
 	"ramdisk ram " RAMDISK_ADDR_R " 0x4000000\0"
 
-#ifdef CONFIG_MMC
-#define BOOT_TARGET_DEVICES_MMC(func) func(MMC, mmc, 0)
-#if CONFIG_MMC_SUNXI_SLOT_EXTRA != -1
-#define BOOT_TARGET_DEVICES_MMC_EXTRA(func) func(MMC, mmc, 1)
-#else
-#define BOOT_TARGET_DEVICES_MMC_EXTRA(func)
-#endif
-#else
-#define BOOT_TARGET_DEVICES_MMC(func)
-#define BOOT_TARGET_DEVICES_MMC_EXTRA(func)
-#endif
-
 #ifdef CONFIG_AHCI
 #define BOOT_TARGET_DEVICES_SCSI(func) func(SCSI, scsi, 0)
 #else
@@ -437,6 +425,18 @@ extern int soft_i2c_gpio_scl;
 #define BOOT_TARGET_DEVICES_USB(func) func(USB, usb, 0)
 #else
 #define BOOT_TARGET_DEVICES_USB(func)
+#endif
+
+#ifdef CONFIG_MMC
+#define BOOT_TARGET_DEVICES_MMC(func) func(MMC, mmc, 0)
+#if CONFIG_MMC_SUNXI_SLOT_EXTRA != -1
+#define BOOT_TARGET_DEVICES_MMC_EXTRA(func) func(MMC, mmc, 1)
+#else
+#define BOOT_TARGET_DEVICES_MMC_EXTRA(func)
+#endif
+#else
+#define BOOT_TARGET_DEVICES_MMC(func)
+#define BOOT_TARGET_DEVICES_MMC_EXTRA(func)
 #endif
 
 /* FEL boot support, auto-execute boot.scr if a script address was provided */
