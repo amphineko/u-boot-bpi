@@ -62,3 +62,9 @@
 #define AXP_GPIO_CTRL_INPUT			0x02 /* Input */
 #define AXP_GPIO_STATE			0x94
 #define AXP_GPIO_STATE_OFFSET			0
+
+/* For Bananapi GPIO */
+#define AXP221_GPIO0_CTRL	0x90
+#define AXP221_GPIO0_LDO	0x91
+#define AXP221_GPIO1_CTRL	0x92
+#define AXP221_GPIO1_LDO	0x93

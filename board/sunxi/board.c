@@ -469,6 +469,13 @@ void sunxi_board_init(void)
 	power_failed |= axp_set_eldo(3, CONFIG_AXP_ELDO3_VOLT);
 #endif
 #endif
+
+	/* For Bananapi, enable GPIO LDO */
+	power_failed |= axp221_set_dldo2(2800);
+	power_failed |= axp221_set_dldo3(3300);
+	power_failed |= axp221_set_gldo(0, 3000);
+	power_failed |= axp221_set_gldo(1, 3000);
+
 	printf("DRAM:");
 	ramsize = sunxi_dram_init();
 	printf(" %lu MiB\n", ramsize >> 20);
